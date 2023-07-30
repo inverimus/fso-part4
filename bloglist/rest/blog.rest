@@ -19,3 +19,7 @@ Content-Type: application/json
   "url": "http://example.org",
   "likes": 100
 }
+###
+@id = 64c65471bc7d9d24750e1137
+DELETE http://localhost:3003/api/blogs/{{id}}
+###

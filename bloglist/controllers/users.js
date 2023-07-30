@@ -3,7 +3,7 @@ const usersRouter = require('express').Router()
 const User = require('../models/user')
 
 usersRouter.get('/', async (request, response) => {
-  const users = await User.find({})
+  const users = await User.find({}).populate('blogs', {url: 1, title: 1, author: 1, id: 1})
   return response.json(users)
 })
 
@@ -14,7 +14,7 @@ usersRouter.post('/', async (request, response) => {
     response.status(400).json({ error: 'password required' }).end()
   }
   if (password.length < 3) {
-    response.status(400).json({ error: 'password minimum length is 3' }).end()
+    response.status(400).json({ error: 'password is shorter than the minimum allowed length (3)' }).end()
   }
 
   const saltRounds = 10
