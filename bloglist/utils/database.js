@@ -7,9 +7,17 @@ const url = config.MONGODB_URI
 
 mongoose.set('strictQuery', false)
 
-const connect = () => mongoose.connect(url)
-  .then(() => { logger.info('connected to MongoDB')})  
-  .catch((e) => { logger.error('error connecting to MongoDB:', e.message) })
+const connect = () => {
+  async function getConnected() {
+    await mongoose.connect(url)
+  }
+  try {
+    getConnected()
+    logger.info('connected to MongoDB')
+  } catch (exception) {
+    logger.error('error connecting to MongoDB:', exception.message)
+  }
+}
 
 module.exports = {
   connect
