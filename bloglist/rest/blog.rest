@@ -20,6 +20,12 @@ Content-Type: application/json
   "likes": 100
 }
 ###
-@id = 64c65471bc7d9d24750e1137
+@id = 64c69dbfc89a2017a50a6062
 DELETE http://localhost:3003/api/blogs/{{id}}
 ###
+POST http://localhost:3003/api/blogs/{{id}}/comments
+Content-Type: application/json
+
+{
+  "comment": "Cool blog man"
+}

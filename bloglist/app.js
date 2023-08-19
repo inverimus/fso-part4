@@ -1,8 +1,6 @@
 const express = require('express')
 require('express-async-errors')
 const cors = require('cors')
-const Blog = require('./models/blog')
-const User = require('./models/user')
 const morganMiddleware = require('./middleware/morganConfig')
 const errorHandler = require('./middleware/errorHandler')
 const tokenExtractor = require('./middleware/tokenExtractor')
